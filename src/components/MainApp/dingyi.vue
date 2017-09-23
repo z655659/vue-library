@@ -1,5 +1,5 @@
 <template>
-	<div id='HU'>
+	<div id='dingyi'>
 		<!--<h1>{{this.$route.query.num}}</h1>-->
     	<v-maintree></v-maintree>
 		<!--<router-link to='/MainApp/ARL/1'>1</router-link>-->
@@ -16,7 +16,7 @@
 <script>
 	import maintree from './ARL/mainTree'
 	export default {
-		name: 'ARL',
+		name: 'dingyi',
 		components: {
 			vMaintree: maintree
 		}
@@ -24,7 +24,7 @@
 </script>
 
 <style>
-	#HU{
+	#dingyi{
 		display: flex;
 		position: absolute;
         left: 0;

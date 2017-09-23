@@ -22,21 +22,20 @@
     <template>
   
        <el-table :data="tabledata" border style="width: 100%">
-        <el-table-column fixed prop="arl_id" label="ARL-Id" width="130">
+        <el-table-column fixed prop="definition_id" label="DEF-Id" width="130">
         </el-table-column>
-        <el-table-column prop="hu_id" label="HU-Id" width="140">
+        <el-table-column prop="definition_id" label="anaylize_id" width="150">
         </el-table-column>
         <el-table-column prop="func_anaylize_num" label="要件分析式样书的数量" width="150">
         </el-table-column>
         <el-table-column prop="func_def_num" label="要件定义书的数量" width="150">
         </el-table-column>
-        <el-table-column prop="HU_num" label="HU式样书的数量" width="150">
-        </el-table-column>
-        <el-table-column fixed="right" label="操作" width="350">
+        
+        <el-table-column fixed="right" label="操作" width="200">
       	  <template scope="scope">
-	        <el-button @click.stop="send(scope.$index)" type="text" size="small">查看H/U</el-button>
-	        <el-button @click.stop="sendDEF(scope.$index)" type="text" size="small">查看要件DEF</el-button>
-	        <el-button @click="newDEF(scope.$index)"type="text" size="small">新增要件DEF</el-button>
+	        <el-button @click.stop="send(scope.$index)" type="text" size="small">查看ALS</el-button>
+	        <!-- <el-button @click.stop="sendALS(scope.$index)" type="text" size="small">查看要件ALS</el-button> -->
+	        
         </template>
     	</el-table-column>
   </el-table>
@@ -62,13 +61,13 @@ import bus from '../../../assets/js/event'
              data: '',
              data2: '',
              data3: '',
-             ARL_id:this.$route.params.ARL_id, 
+             HU_id:this.$route.params.HU_id, 
          	}
      	},
        	created(){
        		var self = this
        		// bus.$on('one',function(){
-			    axios.get('http://192.168.10.13:5000/ARLSubHu/'+this.ARL_id)
+			    axios.get('http://192.168.10.13:5000/HuSubDef/'+this.HU_id)
       		.then(res=>{
       			//debugger
       			// console.log(res)       
@@ -81,20 +80,19 @@ import bus from '../../../assets/js/event'
        	 },
      	methods:{
      		send(index){
-              this.data = this.tabledata[index].hu_id
-              this.data2 = this.tabledata[index].arl_id,
+              this.data = this.tabledata[index].hu_def_id,
+              this.data2 = this.tabledata[index].definition_id,
               this.data3 = this.tabledata[index].un_id,
-              this.$router.push({name: 'Component6',params: {HU_id: this.data,ARL_id: this.data2,UN_id: this.data3,}});
+              this.$router.push({name: 'Component10',params: {HU_id: this.data,DEF_id: this.data2,UN_id: this.data3,}});
      		},
-        sendDEF(index){
-              this.data = this.tabledata[index].hu_id
-              this.$router.push({name: 'DEFlist',params: {HU_id: this.data}});
-        },
-        newDEF(index){
+        	sendALS(index){
+              this.data = this.tabledata[index].definition_id
+              this.$router.push({name: 'ALSlist',params: {DEF_id: this.data}});
+        	},
+        	newALS(index){
               console.log(110110);
-              this.data = this.tabledata[index].hu_id
-              this.$router.push({name: 'Component4_new',params: {HU_id: this.data}});
-        },
+               // bus.$emit('Six',this.content1111[0].arl_id)
+        	},
      		
 
      				
@@ -110,4 +108,6 @@ import bus from '../../../assets/js/event'
 
 
 </style>
+
+
 

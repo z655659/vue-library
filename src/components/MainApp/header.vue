@@ -1,15 +1,22 @@
 <template>
 	<div id='header'>
-		<ul>
+		<ul class='headul'>
           <!--<router-link></router-link>-->
-          <li>
-             ARL
-            <img src="../../assets/img/selected.png" alt="下拉框">              
+          <li class='headli'>
+				<el-select v-model="value" placeholder="ARL" @change="mm">
+				    <el-option
+				      v-for="item in options"
+				      :key="item.value"
+				      :label="item.label"
+				      :value="item.value"
+				      >
+				    </el-option>
+				 </el-select>	
+        </li>
+        <li class='headli'>
+            <input type="text" placeholder="search catalog">
+            <img src="../../assets/img/search2.png" alt="搜索框">
          </li>
-          <li>
-              <input type="text" placeholder="search catalog">
-              <img src="../../assets/img/search2.png" alt="搜索框">
-          </li>
       	</ul>
 		<router-link to='/login'>
 			<div id="logout">
@@ -21,15 +28,40 @@
 	</div>
 </template>
 
-<scirpt>
-	
-</scirpt>
+<script>
+	export default {
+		 data() {
+	      return {
+	        options: [{
+	          value: '/MainApp/ARL',
+	          label: 'ARL'
+	        }, {
+	          value: '/MainApp/HU',
+	          label: 'H/U'
+	        }, {
+	          value: '/MainApp/dingyi',
+	          label: '事件定义'
+	        }, {
+	          value: '/MainApp/fenxi',
+	          label: '事件分析'
+	        }],
+	        value: ''
+	      }
+	    },
+	    methods: {
+	    	mm(value){
+	    		console.log(value)
+	    		this.$router.push(value)
+	    	}
+	    }
+	}
+</script>
 
 <style scoped>
 	 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	    margin: 0;
+	    padding: 0;
+	    box-sizing: border-box;
     }
     #header{
         position:absolute;
@@ -46,7 +78,7 @@
     #header .item{
         text-align: center;
     }
-    ul {
+    .headul {
         /* list-style: none; */
         position: absolute;
         left: 59px;
@@ -55,8 +87,9 @@
         height: 23px;
         border-left: solid 1px #71713b;
         border-right: solid 1px #71713b;
+        color: #867e4f; 
      }
-    ul li{
+    .headli{
         list-style: none;
         float: left;
         color: rgb(204, 164, 59);
@@ -65,8 +98,13 @@
         width: 50%;
         height: 16px;
         margin-top:2px;
+		color: white;      
+        
     }
-    ul li:first-child{
+    .headli a{
+        color: #867e4f; 
+    }
+    .headli:first-child{
         border-right: 1px solid #867132;
     }
     ul img {
@@ -87,7 +125,7 @@
 
     #logout {
         position: absolute;
-        right: 10px;
+        right: 0px;
         top: 20px;
         color: #867e4f; 
     }
@@ -104,5 +142,4 @@
         height: 182px; 
         background-color: white;
     }
-
 </style>

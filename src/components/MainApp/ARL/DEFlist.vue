@@ -26,7 +26,7 @@
         </el-table-column>
         <el-table-column prop="definition_id" label="DEF_id" width="150">
         </el-table-column>
-        <el-table-column prop="func_anaylize_num" label="要件分析式样书的数量" width="150">
+        <el-table-column prop="uniqu" label="要件分析式样书的数量" width="150">
         </el-table-column>
         <el-table-column prop="func_def_num" label="要件定义书的数量" width="150">
         </el-table-column>
@@ -54,7 +54,7 @@ import bus from '../../../assets/js/event'
         data () {
          return {
              tabledata:[],
-             category_id:'6-51-77-333-1317',
+             category_id:'',
              page_size:10,
              page_number:1,
              component2_content: {},
@@ -82,16 +82,18 @@ import bus from '../../../assets/js/event'
      		send(index){
               this.data = this.tabledata[index].hu_def_id,
               this.data2 = this.tabledata[index].definition_id,
-              this.$router.push({name: 'Component4',params: {HU_id: this.data,DEF_id: this.data2,}});
+              this.data3 = this.tabledata[index].un_id,
+              this.$router.push({name: 'Component4',params: {HU_id: this.data,DEF_id: this.data2,UN_id: this.data3,}});
      		},
-        	sendALS(index){
-              this.data = this.tabledata[index].definition_id
-              this.$router.push({name: 'ALSlist',params: {DEF_id: this.data}});
-        	},
-        	newALS(index){
+        sendALS(index){
+              this.data = this.tabledata[index].hu_def_id
+              this.$router.push({name: 'ALSlist',params: {HU_id: this.data}});
+          },
+        newALS(index){
               console.log(110110);
-               // bus.$emit('Six',this.content1111[0].arl_id)
-        	},
+              this.data = this.tabledata[index].hu_def_id
+              this.$router.push({name: 'Component10_new',params: {HU_id: this.data}});
+        },
      		
 
      				

@@ -1,12 +1,13 @@
 <template>
 	<div id='ARL'>
+		<!--<h1>{{this.$route.query.num}}</h1>-->
     	<v-maintree></v-maintree>
 		<!--<router-link to='/MainApp/ARL/1'>1</router-link>-->
 		<!--<router-link to='/MainApp/ARL/2'>2</router-link>-->
 <!--		<router-link to='/MainApp/ARL/3'>3</router-link>
 -->		<!--<router-link to='/MainApp/ARL/4'>4</router-link>-->	
 		<div id='aa'>
-		<router-view></router-view>
+		<router-view keep-alive></router-view>
 		</div>
 
 	</div>
@@ -36,6 +37,9 @@
         background-color: white;
 	}
 	#aa{
+		position: absolute;
+		left: 20%;
+		/*top: 73px;*/
 		width: 80%;
         height: 100%;
         background-color: #d3d0c4;

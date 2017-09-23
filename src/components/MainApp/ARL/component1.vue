@@ -76,9 +76,6 @@ import bus from '../../../assets/js/event'
              page_number:1,
              component2_content: {},
              data: '',
-             arl_id:'' ,
-             data2: '',
-             data3: '',
          	}
      	},
        	mounted(){
@@ -104,9 +101,8 @@ import bus from '../../../assets/js/event'
               this.$router.push({name: 'HUlist',params: {ARL_id: this.data}});
         },
         newHU(index){
-              this.arl_id = this.tabledata[index].arl_id
-              
-              this.$router.push({name: 'Component6',params: {ARL_id: this.arl_id}});
+              this.data = this.tabledata[index].arl_id
+              this.$router.push({name: 'Component6_new',params: {ARL_id: this.data}});
         },
         handleSizeChange(val) {
               console.log(`每页 ${val} 条`);
