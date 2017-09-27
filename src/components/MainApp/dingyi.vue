@@ -1,5 +1,5 @@
 <template>
-	<div id='dingyi'>
+	<div id='ARL'>
 		<!--<h1>{{this.$route.query.num}}</h1>-->
     	<v-maintree></v-maintree>
 		<!--<router-link to='/MainApp/ARL/1'>1</router-link>-->
@@ -7,14 +7,14 @@
 <!--		<router-link to='/MainApp/ARL/3'>3</router-link>
 -->		<!--<router-link to='/MainApp/ARL/4'>4</router-link>-->	
 		<div id='aa'>
-		<router-view></router-view>
+		<router-view ></router-view>
 		</div>
 
 	</div>
 </template>
 
 <script>
-	import maintree from './ARL/mainTree'
+	import maintree from './dingyi/mainTree'
 	export default {
 		name: 'dingyi',
 		components: {
@@ -24,7 +24,7 @@
 </script>
 
 <style>
-	#dingyi{
+	#ARL{
 		display: flex;
 		position: absolute;
         left: 0;
@@ -37,6 +37,9 @@
         background-color: white;
 	}
 	#aa{
+		position: absolute;
+		left: 20%;
+		/*top: 73px;*/
 		width: 80%;
         height: 100%;
         background-color: #d3d0c4;

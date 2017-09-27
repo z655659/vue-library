@@ -21,6 +21,9 @@ import Component6 from '../components/MainApp/ARL/component6'
 import Component6_new from '../components/MainApp/ARL/component6_new'
 import Component10 from '../components/MainApp/ARL/component10'
 import Component10_new from '../components/MainApp/ARL/component10_new'
+
+//import Component11 from '../components/MainApp/HU/component11'
+
 export default new VueRouter({
 	routes:[
 	//登录页面
@@ -63,6 +66,11 @@ export default new VueRouter({
 							name: 'Component4'
 						},
 						{
+							path: '/MainApp/ARL/4-new',
+							component: resolve => require(['../components/MainApp/ARL/component4_new'],resolve),
+							name: 'Component4_new'
+						},
+						{
 							path: '/MainApp/ARL/5',
 							component: resolve => require(['../components/MainApp/ARL/HUlist'],resolve),
 							name: 'HUlist'
@@ -97,8 +105,6 @@ export default new VueRouter({
 							component: resolve => require(['../components/MainApp/ARL/component10_new'],resolve),
 							name: 'Component10_new'
 						}
-						
-						
 					]
 				},
 			// H/U页面
@@ -108,14 +114,49 @@ export default new VueRouter({
 					name: 'HU',
 					children: [
 						{
-							path: './MainApp/HU/1',
-							component: resolve => require(['../components/MainApp/ARL/component1'],resolve),
-							name: 'Component5'
+							path: '/MainApp/HU/1',
+							component: resolve => require(['../components/MainApp/HU/component11'],resolve),
+							name: 'Component11'
 						},
 						{
-							path: './MainApp/HU/2',
-							component: resolve => require(['../components/MainApp/ARL/component1'],resolve),
-							name: 'Component10'
+							path: '/MainApp/HU/4',
+							component: resolve => require(['../components/MainApp/HU/component4'],resolve),
+							name: 'HComponent4'
+						},
+						{
+							path: '/MainApp/HU/4-new',
+							component: resolve => require(['../components/MainApp/HU/component4_new'],resolve),
+							name: 'HComponent4_new'
+						},
+						{
+							path: '/MainApp/HU/6',
+							component: resolve => require(['../components/MainApp/HU/component6'],resolve),
+							name: 'HComponent6'
+						},
+						{
+							path: '/MainApp/HU/6-new',
+							component: resolve => require(['../components/MainApp/HU/component6_new'],resolve),
+							name: 'HComponent6_new'
+						},
+						{
+							path: '/MainApp/HU/7',
+							component: resolve => require(['../components/MainApp/HU/DEFlist'],resolve),
+							name: 'HDEFlist'
+						},
+						{
+							path: '/MainApp/HU/8',
+							component: resolve => require(['../components/MainApp/HU/ALSlist'],resolve),
+							name: 'HALSlist'
+						},
+						{
+							path: '/MainApp/HU/10',
+							component: resolve => require(['../components/MainApp/HU/component10'],resolve),
+							name: 'HComponent10'
+						},
+						{
+							path: '/MainApp/HU/10-new',
+							component: resolve => require(['../components/MainApp/HU/component10_new'],resolve),
+							name: 'HComponent10_new'
 						}
 					]
 				},
@@ -123,14 +164,82 @@ export default new VueRouter({
 				{
 					path: '/MainApp/dingyi',
 					component: resolve => require(['../components/MainApp/dingyi'],resolve),
-					name: 'dingyi'
+					name: 'dingyi',
+					children:[
+						{
+							path: '/MainApp/dingyi/1',
+							component: resolve => require(['../components/MainApp/dingyi/component11'],resolve),
+							name: 'DComponent11'
+						},
+						{
+							path: '/MainApp/dingyi/4',
+							component: resolve => require(['../components/MainApp/dingyi/component4'],resolve),
+							name: 'DComponent4'
+						},
+						{
+							path: '/MainApp/dingyi/4-new',
+							component: resolve => require(['../components/MainApp/dingyi/component4_new'],resolve),
+							name: 'DComponent4_new'
+						},
+						{
+							path: '/MainApp/dingyi/8',
+							component: resolve => require(['../components/MainApp/dingyi/ALSlist'],resolve),
+							name: 'DALSlist'
+						},
+						{
+							path: '/MainApp/dingyi/10',
+							component: resolve => require(['../components/MainApp/dingyi/component10'],resolve),
+							name: 'DComponent10'
+						},
+						{
+							path: '/MainApp/dingyi/10-new',
+							component: resolve => require(['../components/MainApp/dingyi/component10_new'],resolve),
+							name: 'DComponent10_new'
+						}
+					]
 				},
 			//要件分析页面
 				{
 					path: '/MainApp/fenxi',
 					component: resolve => require(['../components/MainApp/fenxi'],resolve),
-					name: 'fenxi'
-				}
+					name: 'fenxi',
+					children:[
+						{
+							path: '/MainApp/fenxi/1',
+							component: resolve => require(['../components/MainApp/fenxi/component11'],resolve),
+							name: 'FComponent11'
+						},					
+						
+						{
+							path: '/MainApp/fenxi/10',
+							component: resolve => require(['../components/MainApp/fenxi/component10'],resolve),
+							name: 'FComponent10'
+						},
+						{
+							path: '/MainApp/fenxi/10-new',
+							component: resolve => require(['../components/MainApp/fenxi/component10_new'],resolve),
+							name: 'FComponent10_new'
+						}
+					]
+				},
+				//登陆管理
+				{
+					path: '/MainApp/USER',
+					component: resolve => require(['../components/MainApp/USER'],resolve),
+					name: 'USER',
+					children: [
+						{
+							path: '/MainApp/USER/usermanage',
+							component: resolve => require(['../components/MainApp/USER/usermanage'],resolve),
+							name: 'Usermanage'
+						},
+						{
+							path: '/MainApp/USER/groupmanage',
+							component: resolve => require(['../components/MainApp/USER/groupmanage'],resolve),
+							name: 'Groupmanage'
+						}
+					]
+				},
 			]
 		},
 		{

@@ -18,9 +18,16 @@
             <img src="../../assets/img/search2.png" alt="搜索框">
          </li>
       	</ul>
+            <div id="my" @click="jump">
+               <span> name:xxxx</span><br>
+               <span> group:yyy</span>
+            </div>
+            <div id="my-group" @click="jump2">
+                group_manage
+            </div>
 		<router-link to='/login'>
 			<div id="logout">
-	          <img src="../../assets/img/exits2.png" alt="注销">
+	          <img src="../../assets/img/exits2.png" alt="注销"><br>
 	          <span>logout</span>
 	      </div> 
 		</router-link>
@@ -40,10 +47,10 @@
 	          label: 'H/U'
 	        }, {
 	          value: '/MainApp/dingyi',
-	          label: '事件定义'
+	          label: '要件定義'
 	        }, {
 	          value: '/MainApp/fenxi',
-	          label: '事件分析'
+	          label: '要件分析'
 	        }],
 	        value: ''
 	      }
@@ -52,7 +59,13 @@
 	    	mm(value){
 	    		console.log(value)
 	    		this.$router.push(value)
-	    	}
+	    	},
+            jump(){
+                this.$router.push('/MainApp/USER');
+            },
+            jump2(){
+                this.$router.push('/MainApp/USER');
+            }
 	    }
 	}
 </script>
@@ -64,7 +77,7 @@
 	    box-sizing: border-box;
     }
     #header{
-        position:absolute;
+        position:relative;
         left: 0;
         right: 0;
         top: 0;
@@ -122,11 +135,28 @@
     ul input::-webkit-input-placeholder {
         color: #867132;
     }
+    #my{
+        position: absolute;
+        
+        /*float: right;*/
+        top: 16px;
+        right: 100px;
+        /*border: 1px solid red;*/
+        color: #867132
+    }
+    #my-group{
+        position: absolute;
+        /*float: right;*/
+        top: 16px;
+        right: 200px;
+        /*border: 1px solid red;*/
+        color: #867132
+    }
 
     #logout {
         position: absolute;
-        right: 0px;
-        top: 20px;
+        right: 10px;
+        top: 10px;
         color: #867e4f; 
     }
     #logout img{

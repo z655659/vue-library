@@ -14,9 +14,9 @@
 </template>
 
 <script>
-	import maintree from './ARL/mainTree'
+	import maintree from './HU/mainTree'
 	export default {
-		name: 'ARL',
+		name: 'HU',
 		components: {
 			vMaintree: maintree
 		}

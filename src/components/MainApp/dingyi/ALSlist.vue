@@ -22,13 +22,11 @@
     <template>
   
        <el-table :data="tabledata" border style="width: 100%">
-        <el-table-column fixed prop="definition_id" label="DEF-Id" width="130">
+        <el-table-column fixed prop="definition_id" label="要件定義ID" width="200">
         </el-table-column>
-        <el-table-column prop="definition_id" label="anaylize_id" width="150">
+        <el-table-column prop="unique_id" label="ユニークID" width="200">
         </el-table-column>
-        <el-table-column prop="func_anaylize_num" label="要件分析式样书的数量" width="150">
-        </el-table-column>
-        <el-table-column prop="func_def_num" label="要件定义书的数量" width="150">
+        <el-table-column prop="pf_trigger" label="リガー" width="200">
         </el-table-column>
         
         <el-table-column fixed="right" label="操作" width="200">
@@ -84,11 +82,11 @@ import bus from '../../../assets/js/event'
               this.data = this.tabledata[index].hu_def_id,
               this.data2 = this.tabledata[index].definition_id,
               this.data3 = this.tabledata[index].un_id,
-              this.$router.push({name: 'Component10',params: {HU_id: this.data,DEF_id: this.data2,UN_id: this.data3,}});
+              this.$router.push({name: 'DComponent10',params: {HU_id: this.data,DEF_id: this.data2,UN_id: this.data3,}});
      		},
         	sendALS(index){
               this.data = this.tabledata[index].definition_id
-              this.$router.push({name: 'ALSlist',params: {DEF_id: this.data}});
+              this.$router.push({name: 'DALSlist',params: {DEF_id: this.data}});
         	},
         	newALS(index){
               console.log(110110);

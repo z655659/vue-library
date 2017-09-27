@@ -15,9 +15,9 @@
 </template>
  
 <script>
-import myTree from './treeMenu.vue'
+//import myTree from './treeMenu.vue'
 import axios from 'axios'
-import bus from '../../../assets/js/event'
+//import bus from '../../../assets/js/event'
 export default {
 //components: {
 //  myTree
@@ -61,24 +61,33 @@ export default {
     },
     methods: {
       handleNodeClick(data) {
-//  	debugger;
-			window.localStorage.setItem("b",data.category_id);  //设置b为"isaac"
+//    	console.log(this.$store.state.user_data)
+//				console.log(event.target.parentNode)
+					//span判断
+					if(event.target.parentNode.nextSibling.childNodes.length == 0 ){
+						window.localStorage.setItem("b",data.category_id);  //设置b为"isaac"
+//						console.log(window.localStorage.getItem('b'))
 //			var b=window.localStorage.getItem("b");  //获取b的值，字符串
 //			window.localStorage.removeItem("c"); 
 //				console.log(window.localStorage.getItem('b'))
       	this.dataid = data.category_id
+      	this.$store.state.user_data = this.dataid;
+      	console.log(this.$store.state.user_data)
 //    	localStorage.set
 
 //    	console.log(this.dataid)
 //    	this.$store.commit('getDataid')
 //      debugger
-      	this.$router.push('/MainApp/ARL/1')
-				bus.$emit('one','200')
+      	this.$router.push('/MainApp/fenxi/1')
+//				bus.$emit('one','200')
+					}
+//  	debugger;
+			
 //				alert("点击")
       	
       },
       request: function(){
-          axios.get('http://192.168.10.13:5000/ARLCategory')
+          this.$ajax.get('http://192.168.10.13:5000/ARLCategory')
           .then(response=> {
 //        console.log(response);
           this.data = response.data.content;

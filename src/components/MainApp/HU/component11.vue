@@ -23,29 +23,23 @@
 	
 	<div>
 		<el-table :data="tabledata" border style="width: 100%">
-			<el-table-column fixed prop="arl_id" label="ARL-Id" width="150">
+			<el-table-column fixed prop="hu_id" label="HU-Id" width="150">
 			</el-table-column>
-			<el-table-column prop="sub_id" label="SUB-Id" width="100">
+			<el-table-column prop="unique_id" label="ユニークID" width="200">
 			</el-table-column>
-			<el-table-column prop="from_info" label="転記してきた要件" width="680">
-			</el-table-column>
-			<el-table-column prop="func_anaylize_num" label="要件分析式样书的数量" width="150">
-			</el-table-column>
-			<el-table-column prop="func_def_num" label="要件定义书的数量" width="150">
-			</el-table-column>
-			<el-table-column prop="HU_num" label="HU式样书的数量" width="150">
-			</el-table-column>
+			<el-table-column prop="rel_requirement" label="関連基本要件" width="680">
+			</el-table-column>	
 			<el-table-column fixed="right" label="操作" width="200">
 				<template scope="scope">
-					<el-button @click.stop="send(scope.$index)" type="text" size="small">查看</el-button>
-					<el-button @click="sendHU(scope.$index)" type="text" size="small">查看H/U</el-button>
-					<el-button @click="newHU(scope.$index)" type="text" size="small">新增HU</el-button>
+					<el-button @click.stop="send(scope.$index)" type="text" size="small">查看H/U</el-button>
+	        <el-button @click.stop="sendDEF(scope.$index)" type="text" size="small">查看要件DEF</el-button>
+	        <el-button @click="newDEF(scope.$index)"type="text" size="small">新增要件DEF</el-button>
 				</template>
 			</el-table-column>
 		</el-table>
 		<div class="block">
 			<span class="demonstration"></span>
-			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="page_number" :page_sizes="[10, 20,]" :page_size="10" layout="sizes, prev, pager, next" :total="total"  >
+			<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="page_number" :page_sizes="[10, 20,]" :page_size="10" layout="sizes, prev, pager, next" :total="total">
 			</el-pagination>
 		</div>
 	</div>
@@ -92,7 +86,7 @@
 			//加载component1 页面时 ， 触发的方法
 			huo() {
 				var self = this
-				axios.get('http://192.168.10.13:5000/ARLSummary/' + window.localStorage.getItem('b') + '/' + self.page_size + '/' + self.page_number)
+				axios.get('http://192.168.10.13:5000/HUSummary/' + window.localStorage.getItem('b') + '/' + self.page_size + '/' + self.page_number)
 					.then(res => {
 						//debugger
 						console.log(res.data.content, '这是获取页面1的列表')
@@ -101,39 +95,25 @@
 					})
 			},
 			//点击事件触发send方法，跳转到component2页面
-			send(index) {
-				this.data = this.tabledata[index].arl_id
-				this.$router.push({
-					name: 'Component2',
-					params: {
-						ARL_id: this.data
-					}
-				});
-			},
-			sendHU(index) {
-				this.data = this.tabledata[index].arl_id
-
-				this.$router.push({
-					name: 'HUlist',
-					params: {
-						ARL_id: this.data
-					}
-				});
-			},
-			newHU(index) {
-				this.arl_id = this.tabledata[index].arl_id
-
-				this.$router.push({
-					name: 'Component6_new',
-					params: {
-						ARL_id: this.arl_id
-					}
-				});
-			},
+			send(index){
+              this.data = this.tabledata[index].hu_id
+              this.data2 = this.tabledata[index].arl_id,
+              this.data3 = this.tabledata[index].un_id,
+              this.$router.push({name: 'HComponent6',params: {HU_id: this.data,ARL_id: this.data2,UN_id: this.data3,}});
+     		},
+        sendDEF(index){
+              this.data = this.tabledata[index].hu_id
+              this.$router.push({name: 'HDEFlist',params: {HU_id: this.data}});
+        },
+        newDEF(index){
+              console.log(110110);
+              this.data = this.tabledata[index].hu_id
+              this.$router.push({name: 'HComponent4_new',params: {HU_id: this.data}});
+        },
 			handleSizeChange(val) {
 				console.log(`每页 ${val} 条`);
 				this.page_size = val;
-				axios.get('http://192.168.10.13:5000/ARLSummary/' + window.localStorage.getItem('b') + '/' + this.page_size + '/' + this.page_number)
+				axios.get('http://192.168.10.13:5000/HUSummary/' + window.localStorage.getItem('b') + '/' + this.page_size + '/' + this.page_number)
 					.then(res => {
 						this.tabledata = res.data.content;
 					})
@@ -141,7 +121,7 @@
 			handleCurrentChange(val) {
 				console.log(`当前页: ${val}`);
 				this.page_number = val;
-				axios.get('http://192.168.10.13:5000/ARLSummary/' + window.localStorage.getItem('b') + '/' + this.page_size + '/' + this.page_number)
+				axios.get('http://192.168.10.13:5000/HUSummary/' + window.localStorage.getItem('b') + '/' + this.page_size + '/' + this.page_number)
 					.then(res => {
 						this.tabledata = res.data.content;
 					})

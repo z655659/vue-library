@@ -22,20 +22,18 @@
     <template>
   
        <el-table :data="tabledata" border style="width: 100%">
-        <el-table-column fixed prop="definition_id" label="DEF-Id" width="130">
+        <el-table-column fixed prop="definition_id" label="要件定義ID" width="130">
         </el-table-column>
-        <el-table-column prop="definition_id" label="anaylize_id" width="150">
+        <el-table-column prop="unique_id" label="ユニークID" width="150">
         </el-table-column>
-        <el-table-column prop="func_anaylize_num" label="要件分析式样书的数量" width="150">
-        </el-table-column>
-        <el-table-column prop="func_def_num" label="要件定义书的数量" width="150">
+        <el-table-column prop="pf_trigger" label="リガー" width="150">
         </el-table-column>
         
-        <el-table-column fixed="right" label="操作" width="200">
+        <el-table-column fixed="right" label="操作" width="350">
       	  <template scope="scope">
-	        <el-button @click.stop="send(scope.$index)" type="text" size="small">查看ALS</el-button>
-	        <!-- <el-button @click.stop="sendALS(scope.$index)" type="text" size="small">查看要件ALS</el-button> -->
-	        
+	        <el-button @click.stop="send(scope.$index)" type="text" size="small">查看要件定義</el-button>
+	        <el-button @click.stop="sendALS(scope.$index)" type="text" size="small">查看要件ALS</el-button>
+	        <el-button @click="newALS(scope.$index)"type="text" size="small">新增要件ALS</el-button>
         </template>
     	</el-table-column>
   </el-table>
@@ -54,7 +52,7 @@ import bus from '../../../assets/js/event'
         data () {
          return {
              tabledata:[],
-             category_id:'6-51-77-333-1317',
+             category_id:'',
              page_size:10,
              page_number:1,
              total:'',
@@ -84,16 +82,17 @@ import bus from '../../../assets/js/event'
               this.data = this.tabledata[index].hu_def_id,
               this.data2 = this.tabledata[index].definition_id,
               this.data3 = this.tabledata[index].un_id,
-              this.$router.push({name: 'Component10',params: {HU_id: this.data,DEF_id: this.data2,UN_id: this.data3,}});
+              this.$router.push({name: 'HComponent4',params: {HU_id: this.data,DEF_id: this.data2,UN_id: this.data3,}});
      		},
-        	sendALS(index){
-              this.data = this.tabledata[index].definition_id
-              this.$router.push({name: 'ALSlist',params: {DEF_id: this.data}});
-        	},
-        	newALS(index){
+        sendALS(index){
+              this.data = this.tabledata[index].hu_def_id
+              this.$router.push({name: 'HALSlist',params: {HU_id: this.data}});
+          },
+        newALS(index){
               console.log(110110);
-               // bus.$emit('Six',this.content1111[0].arl_id)
-        	},
+              this.data = this.tabledata[index].hu_def_id
+              this.$router.push({name: 'HComponent10_new',params: {HU_id: this.data}});
+        },
      		
 
      				
@@ -109,6 +108,5 @@ import bus from '../../../assets/js/event'
 
 
 </style>
-
 
 

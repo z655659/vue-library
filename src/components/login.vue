@@ -63,7 +63,7 @@ export default {
                 this.$router.push('/MainApp/ARL') 
                 var self=this;
                 console.log(this.valueup)
-                axios.get('http://172.26.11.56:5000/login/1/1').then(res=>{
+                axios.get('http://192.168.10.13:5000/login/1/1').then(res=>{
 
                    console.log(res)
                 })

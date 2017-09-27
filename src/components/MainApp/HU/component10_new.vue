@@ -133,7 +133,7 @@
 					event.target.nextSibling.nextSibling.style='display:none'
 				},
 				submitForm(event) {
-					alert("1111111")
+					alert("success")
 				  var ipt=document.getElementsByTagName("input");
 				  //console.log(ipt);
 				  for(var i=0;i<ipt.length;i++){

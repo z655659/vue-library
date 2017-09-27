@@ -24,7 +24,7 @@
        <el-table :data="tabledata" border style="width: 100%">
         <el-table-column fixed prop="hu_def_id" label="HU-Id" width="130">
         </el-table-column>
-        <el-table-column prop="definition_id" label="DEF_id" width="150">
+        <el-table-column prop="definition_id" label="要件定義ID" width="150">
         </el-table-column>
         <el-table-column prop="uniqu" label="要件分析式样书的数量" width="150">
         </el-table-column>
@@ -33,7 +33,7 @@
         
         <el-table-column fixed="right" label="操作" width="350">
       	  <template scope="scope">
-	        <el-button @click.stop="send(scope.$index)" type="text" size="small">查看EDF</el-button>
+	        <el-button @click.stop="send(scope.$index)" type="text" size="small">查看要件定義</el-button>
 	        <el-button @click.stop="sendALS(scope.$index)" type="text" size="small">查看要件ALS</el-button>
 	        <el-button @click="newALS(scope.$index)"type="text" size="small">新增要件ALS</el-button>
         </template>
@@ -57,7 +57,7 @@ import bus from '../../../assets/js/event'
              category_id:'',
              page_size:10,
              page_number:1,
-             component2_content: {},
+             total:'',
              data: '',
              data2: '',
              data3: '',
@@ -72,6 +72,7 @@ import bus from '../../../assets/js/event'
       			//debugger
       			// console.log(res)       
       			self.tabledata = res.data.content;
+            self.total = res.data.total_count;
 
        		})
 

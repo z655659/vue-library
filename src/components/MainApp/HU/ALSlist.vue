@@ -84,11 +84,11 @@ import bus from '../../../assets/js/event'
               this.data = this.tabledata[index].hu_def_id,
               this.data2 = this.tabledata[index].definition_id,
               this.data3 = this.tabledata[index].un_id,
-              this.$router.push({name: 'Component10',params: {HU_id: this.data,DEF_id: this.data2,UN_id: this.data3,}});
+              this.$router.push({name: 'HComponent10',params: {HU_id: this.data,DEF_id: this.data2,UN_id: this.data3,}});
      		},
         	sendALS(index){
               this.data = this.tabledata[index].definition_id
-              this.$router.push({name: 'ALSlist',params: {DEF_id: this.data}});
+              this.$router.push({name: 'HALSlist',params: {DEF_id: this.data}});
         	},
         	newALS(index){
               console.log(110110);

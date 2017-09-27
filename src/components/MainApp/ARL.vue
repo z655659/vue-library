@@ -7,7 +7,7 @@
 <!--		<router-link to='/MainApp/ARL/3'>3</router-link>
 -->		<!--<router-link to='/MainApp/ARL/4'>4</router-link>-->	
 		<div id='aa'>
-		<router-view keep-alive></router-view>
+		<router-view ></router-view>
 		</div>
 
 	</div>

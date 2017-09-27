@@ -58,7 +58,7 @@ import bus from '../../../assets/js/event'
              category_id:'6-51-77-333-1317',
              page_size:10,
              page_number:1,
-             component2_content: {},
+             total:'',
              data: '',
              data2: '',
              data3: '',
@@ -68,11 +68,13 @@ import bus from '../../../assets/js/event'
        	created(){
        		var self = this
        		// bus.$on('one',function(){
+       			console.log(this.ARL_id)
 			    axios.get('http://192.168.10.13:5000/ARLSubHu/'+this.ARL_id)
       		.then(res=>{
       			//debugger
-      			// console.log(res)       
+        			 console.log(res)       
       			self.tabledata = res.data.content;
+            self.total = res.data.total_count;
 
        		})
 
