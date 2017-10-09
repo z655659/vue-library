@@ -1,5 +1,5 @@
 {
-  "name": "vue-project",
+  "name": "spider",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "wangwenjie <wangwenjie@pset.suntec.net>",
@@ -11,10 +11,11 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "element-ui": "^1.4.4",
+    "echarts": "^3.7.2",
+    "element-ui": "^1.4.6",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0",
-    "vuex": "^2.4.0"
+    "vuex": "^2.4.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
